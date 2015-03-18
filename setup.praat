@@ -20,9 +20,9 @@
 # runScript: "run_tests.praat"
 
 # Base menu
-Add menu command: "Objects", "Praat", "CPrAN",       "", 0, ""
-Add menu command: "Objects", "Praat", "Sndutils", "", 1, ""
-Add menu command: "Objects", "Praat", "Batch RMS normalisation...", "Sndutils", 2, "scripts/batch_rms_normalise.praat"
+Add menu command: "Objects", "Praat", "sndutils", "CPrAN", 1, ""
+
+Add menu command: "Objects", "Praat", "Batch RMS normalisation...", "sndutils", 2, "scripts/batch_rms_normalise.praat"
 
 # Sound commands
 Add action command: "Sound", 0, "", 0, "", 0, "Filter and center...", "Filter -", 1, "scripts/filter_and_center.praat"
