@@ -12,5 +12,5 @@ This plugin defines a set of Sound utilities:
 Requirements
 ------------
 
-* [utils](https://gitlab.com/cpran/utils)
-* [selection](https://gitlab.com/cpran/selection)
+* [utils](https://gitlab.com/cpran/plugin_utils)
+* [selection](https://gitlab.com/cpran/plugin_selection)
