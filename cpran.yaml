@@ -5,8 +5,9 @@ Version: 0.0.1
 Maintainer: José Joaquín Atria <jjatria@gmail.com>
 Depends:
   praat: 5.0.0+
-  cpran/utils: 0.0.1+
-  cpran/selection: 0.0.1+
+  Plugins:
+    utils: 0.0.1+
+    selection: 0.0.1+
 Recommends:
 License: GPL3
 Readme: readme.md
