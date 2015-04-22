@@ -123,6 +123,10 @@ if sounds and sounds = all
   removeObject: normalised
 endif
 
+if keep_conversion_table
+  plusObject(table)
+endif
+
 procedure rms_and_max ()
   rms = Get root-mean-square: 0, 0
   max = Get maximum: 0, 0, "None"

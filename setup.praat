@@ -22,7 +22,7 @@
 # Base menu
 Add menu command: "Objects", "Praat", "sndutils", "CPrAN", 1, ""
 
-Add menu command: "Objects", "Praat", "Batch RMS normalisation...", "sndutils", 2, "scripts/batch_rms_normalise.praat"
+Add menu command: "Objects", "Praat", "Batch RMS normalisation...", "sndutils", 2, "scripts/batch_rms_normalize.praat"
 
 # Sound commands
 Add action command: "Sound", 0, "", 0, "", 0, "Filter and center...", "Filter -", 1, "scripts/filter_and_center.praat"
