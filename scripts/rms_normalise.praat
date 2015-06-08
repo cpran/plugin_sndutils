@@ -10,15 +10,21 @@
 # A copy of the GNU General Public License is available at
 # <http://www.gnu.org/licenses/>.
 #
+include ../../plugin_selection/procedures/selection.proc
 
-form RMS normalisation (old)...
+form RMS normalisation...
   positive Target_intensity_(dB) 70
   boolean  Keep_conversion_table no
   boolean  Make_changes_inline no
-  boolean  Verbose no
 endform
 
-appendInfoLine: "# This script is deprecated. Use rms_normalise.praat instead"
+batch = 0
+inline = make_changes_inline
+sounds = numberOfSelected("Sound")
+tables = numberOfSelected("Table")
+strings = 0
+if !sounds and !tables
+  exitScript: "Running in standard mode without suitable objects"
+endif
 
-runScript: "rms_normalise.praat", target_intensity,
-  ... keep_conversion_table, make_changes_inline
+include _rms_normalise.praat
