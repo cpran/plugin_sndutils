@@ -1,0 +1,11 @@
+include ../../plugin_utils/procedures/utils.proc
+include ../../plugin_selection/procedures/selection.proc
+
+form RMS normalisation...
+  positive Target_intensity_(dB) 70
+  boolean  Keep_conversion_table no
+  boolean  Make_changes_inline no
+  boolean  Verbose no
+endform
+
+

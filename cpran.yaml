@@ -1,13 +1,16 @@
 ---
 Plugin: sndutils
 Homepage: https://gitlab.com/cpran/plugin_sndutils
-Version: 0.0.2
+Version: 0.0.3
 Maintainer: José Joaquín Atria <jjatria@gmail.com>
 Depends:
   praat: 5.0.0+
   Plugins:
     utils: 0.0.1+
-    selection: 0.0.1+
+    strutils: 0.0.3+
+    selection: 0.0.7+
+    testsimple: 0.0.6+
+    vieweach: 0.0.4+
 Recommends:
 License: GPL3
 Readme: readme.md
