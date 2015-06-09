@@ -1,21 +1,25 @@
 
-pass = 1
 selection$ = preferencesDirectory$ - "con" + "/plugin_selection/scripts/"
 
 runScript: selection$ + "save_selection.praat"
 selection = selected("Table")
+Rename: "original_selection"
 
 conversions = Create Table with column names: "conversions", 0,
   ... "filename rms_pre max_pre rms_post max_post"
 
 @createEmptySelectionTable()
 final_selection = createEmptySelectionTable.table
+selectObject: final_selection
+Rename: "final_selection"
 
 selectObject: selection
 if (!batch and tables) or (batch and strings)
   runScript: selection$ + "restore_selection.praat"
+  removeObject: selection
 endif
 
+pass = 1
 @for_each()
 
 if max >= 1
@@ -31,7 +35,7 @@ endif
 
 selectObject: final_selection
 runScript: selection$ + "restore_selection.praat"
-removeObject: selection, final_selection
+nocheck removeObject: selection, final_selection
 
 procedure for_each.action ()
   if pass == 1
@@ -52,8 +56,8 @@ procedure for_each.action ()
 
     selectObject: conversions
     Append row
-    Set numeric value: for_each.item, "rms_pre",  rms_and_max.rms
-    Set numeric value: for_each.item, "max_pre",  rms_and_max.max
+    Set numeric value: for_each.current, "rms_pre",  rms_and_max.rms
+    Set numeric value: for_each.current, "max_pre",  rms_and_max.max
 
     selectObject: .sound
     Scale intensity: target_intensity
@@ -61,8 +65,8 @@ procedure for_each.action ()
     @rms_and_max()
 
     selectObject: conversions
-    Set numeric value: for_each.item, "rms_post", rms_and_max.rms
-    Set numeric value: for_each.item, "max_post", rms_and_max.max
+    Set numeric value: for_each.current, "rms_post", rms_and_max.rms
+    Set numeric value: for_each.current, "max_post", rms_and_max.max
 
     selectObject: .sound
     if batch
@@ -81,7 +85,7 @@ procedure for_each.action ()
       Read from file: temp$ + .name$ + "_temp.Sound"
       deleteFile: temp$ + .name$ + "_temp.Sound"
     elsif !inline
-      selectObject: Object_'final_selection'[for_each.item, "id"]
+      selectObject: Object_'final_selection'[for_each.current, "id"]
     endif
 
     .sound = selected("Sound")
@@ -93,8 +97,8 @@ procedure for_each.action ()
       @rms_and_max()
 
       selectObject: conversions
-      Set numeric value: for_each.item, "rms_post", rms_and_max.rms
-      Set numeric value: for_each.item, "max_post", rms_and_max.max
+      Set numeric value: for_each.current, "rms_post", rms_and_max.rms
+      Set numeric value: for_each.current, "max_post", rms_and_max.max
 
       selectObject: .sound
       intensity = Get intensity (dB)
@@ -113,18 +117,17 @@ procedure for_each.at_end_iteration ()
   # After iterating forwards once, we check if there were any clippings
   # If there were any, we need to go back and re-scale the sounds.
   # If we run in batch mode, we loop back anyway to convert to wav
-  if for_each.next > 0 and for_each.item == for_each.total_items
-    selectObject: conversions
-    max = Get maximum: "max_post"
+  if for_each.current == for_each.last
+    if pass == 1
+      selectObject: conversions
+      max = Get maximum: "max_post"
 
-    if batch or max >= 1
-      if max >= 1
-        factor = 0.999 / max
+      # Go back for a second pass
+      if batch or max >= 1
+        factor = if max >= 1 then 0.999 / max else 1 fi
+        for_each.current = 0
+        pass += 1
       endif
-
-      for_each.item += 1
-      for_each.next = -1
-      pass = 2
     endif
   endif
 endproc
