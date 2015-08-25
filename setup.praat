@@ -16,9 +16,6 @@
 
 ## Static commands:
 
-# Uncomment next line to run tests at startup
-# runScript: "run_tests.praat"
-
 # Base menu
 nocheck Add menu command: "Objects", "Praat", "sndutils", "CPrAN", 1, ""
 
