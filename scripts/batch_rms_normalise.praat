@@ -16,6 +16,8 @@ include ../../plugin_utils/procedures/utils.proc
 include ../../plugin_utils/procedures/check_directory.proc
 include ../../plugin_selection/procedures/selection.proc
 
+preferencesDirectory$ = replace_regex$(preferencesDirectory$, "(con)?(\.(EXE|exe))?$", "", 0)
+
 form RMS normalisation...
   sentence Read_from
   sentence Save_to
@@ -34,7 +36,7 @@ save_to$ = checkDirectory.name$
 @mktemp: "rms_XXXXXX"
 temp$ = mktemp.return$
 
-runScript: preferencesDirectory$ - "con" + "/plugin_strutils/scripts/" +
+runScript: preferencesDirectory$ + "/plugin_strutils/scripts/" +
   ... "file_list_full_path.praat", "files", read_from$, "*" + sound_extension$, 0
 files = selected("Strings")
 

@@ -1,5 +1,5 @@
 
-selection$ = preferencesDirectory$ - "con" + "/plugin_selection/scripts/"
+selection$ = preferencesDirectory$ + "/plugin_selection/scripts/"
 
 runScript: selection$ + "save_selection.praat"
 selection = selected("Table")

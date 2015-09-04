@@ -1,14 +1,16 @@
 include ../../plugin_testsimple/procedures/test_simple.proc
 
+preferencesDirectory$ = replace_regex$(preferencesDirectory$, "(con)?(\.(EXE|exe))?$", "", 0)
+
 # Setup
 
 @no_plan()
 
-selection$ = preferencesDirectory$ - "con" + "/plugin_selection/scripts/"
-sndutils$ = preferencesDirectory$ - "con" + "/plugin_sndutils/scripts/"
-strutils$ = preferencesDirectory$ - "con" + "/plugin_strutils/scripts/"
-target[0] = 70
-target[1] = 90
+selection$ = preferencesDirectory$ + "/plugin_selection/scripts/"
+sndutils$  = preferencesDirectory$ + "/plugin_sndutils/scripts/"
+strutils$  = preferencesDirectory$ + "/plugin_strutils/scripts/"
+target[0]  = 70
+target[1]  = 90
 
 procedure for_each.action ()
   .intensity[for_each.item] = Get intensity (dB)
