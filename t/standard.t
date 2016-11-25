@@ -1,6 +1,9 @@
 include ../../plugin_tap/procedures/more.proc
 include ../../plugin_strutils/procedures/file_list_full_path.proc
 
+selection$ = preferencesDirectory$ + "/plugin_selection/scripts/"
+sndutils$  = preferencesDirectory$ + "/plugin_sndutils/scripts/"
+
 @plan: 66
 
 in$  = preferencesDirectory$ + "/plugin_sndutils/t/batch_in"
