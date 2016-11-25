@@ -1,7 +1,7 @@
 ---
 Plugin: sndutils
 Homepage: https://gitlab.com/cpran/plugin_sndutils
-Version: 0.0.5
+Version: 0.0.6
 Maintainer: José Joaquín Atria <jjatria@gmail.com>
 Depends:
   praat: 5.0.0+
