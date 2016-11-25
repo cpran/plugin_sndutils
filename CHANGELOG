@@ -1,0 +1,23 @@
+- next: # unreleased
+- v0.0.6:
+  - New:
+    - This change log :)
+  - Changes:
+    - Tests now use tap plugin
+  - Fix:
+    - CI script now uses CPrAN docker image
+    - Minor cosmetic changes in setup script
+- v0.0.5:
+  - Fix:
+    - Setup script uses nocheck
+- v0.0.4:
+  - Fix:
+    - Simplified internal logic
+- v0.0.3:
+  - Changes:
+    - Complete re-factor of normalising script
+- v0.0.2:
+  - Fix:
+    - Minor bug fixes
+- v0.0.1:
+  - Initial release
