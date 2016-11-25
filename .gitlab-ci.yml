@@ -1,48 +1,15 @@
+image: cpran:latest
+
 variables:
-  CPRAN_GIT: https://gitlab.com/cpran/plugin_
+  CPRAN_PREF_DIR: "/builds/$CI_PROJECT_NAMESPACE"
 
 before_script:
-  - pushd ..
-  - rm -rf plugin_{utils,strutils,selection,testsimple,vieweach}
-  - git clone ${CPRAN_GIT}testsimple.git
-  - git clone ${CPRAN_GIT}utils.git
-  - git clone ${CPRAN_GIT}strutils.git
-  - git clone ${CPRAN_GIT}selection.git
-  - git clone ${CPRAN_GIT}vieweach.git
-  - popd
-      
-Praat 5.4.22:
+  - cpran init --notest --reinstall
+  - cpran update
+  - cpran deps | cpran --yes install --notest -
+
+Praat:
   script:
-    - prove -v --exec "praat-5.4.22 --ansi --pref-dir=../.."
+    - prove -v --exec "praat --ansi --pref-dir=$CPRAN_PREF_DIR --run"
   tags:
     - cpran
-  allow_failure: true
-
-Praat 6.0.03:
-  script:
-    - prove -v --exec "praat-6.0.03 --ansi --pref-dir=../.. --run"
-  tags:
-    - cpran
-  allow_failure: true
-
-Praat 6.0.11:
-  script:
-    - prove -v --exec "praat-6.0.11 --ansi --pref-dir=../.. --run"
-  tags:
-    - cpran
-  allow_failure: true
-
-Praat 6.0.13:
-  script:
-    - prove -v --exec "praat-6.0.13 --ansi --pref-dir=../.. --run"
-  tags:
-    - cpran
-  allow_failure: true
-
-Praat 6.0.14:
-  script:
-    - prove -v --exec "praat-6.0.14 --ansi --pref-dir=../.. --run"
-  tags:
-    - cpran
-
-
