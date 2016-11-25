@@ -3,8 +3,7 @@
 # Find the latest version of this plugin at
 # https://gitlab.com/cpran/plugin_sndutils
 #
-# Written by Jose J. Atria (18 November 2011)
-# Latest revision: April 4, 2014
+# Written by José Joaquín Atria
 #
 # This script is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
