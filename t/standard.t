@@ -1,30 +1,13 @@
 include ../../plugin_tap/procedures/more.proc
 include ../../plugin_strutils/procedures/file_list_full_path.proc
 
-<<<<<<< HEAD:t/standard.t
-sndutils$  = preferencesDirectory$ - "con" + "/plugin_sndutils/scripts/"
-selection$ = preferencesDirectory$ - "con" + "/plugin_selection/scripts/"
-=======
-preferencesDirectory$ = replace_regex$(preferencesDirectory$, "(con)?(\.(EXE|exe))?$", "", 0)
-
-# Setup
->>>>>>> 2d55600d8a31c5dddd5304102d595b4b21ff9f03:t/01.rms_normalise.t
-
 @plan: 66
 
 in$  = preferencesDirectory$ + "/plugin_sndutils/t/batch_in"
 out$ = preferencesDirectory$ + "/plugin_sndutils/t/batch_out"
 
-<<<<<<< HEAD:t/standard.t
 target[0] = 70
 target[1] = 90
-=======
-selection$ = preferencesDirectory$ + "/plugin_selection/scripts/"
-sndutils$  = preferencesDirectory$ + "/plugin_sndutils/scripts/"
-strutils$  = preferencesDirectory$ + "/plugin_strutils/scripts/"
-target[0]  = 70
-target[1]  = 90
->>>>>>> 2d55600d8a31c5dddd5304102d595b4b21ff9f03:t/01.rms_normalise.t
 
 createDirectory: in$
 createDirectory: out$
