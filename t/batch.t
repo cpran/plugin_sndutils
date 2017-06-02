@@ -66,15 +66,15 @@ for t from 0 to 1
     removeObject: files
   endfor
 endfor
-deleteFile: out$
 
-files = Create Strings as file list: "in", in$ + "/*wav"
-for i to infiles
-  file$ = Get string: i
-  deleteFile: in$ + "/" + file$
-endfor
-deleteFile: in$
-removeObject: files
+@remove_tree: in$
+@remove_tree: out$
+
+removeObject: synth, sound, textgrid
+
+@ok_selection()
+
+@done_testing()
 
 procedure test: .target
   .to_reference = 1
@@ -102,8 +102,24 @@ procedure test: .target
   endfor
 endproc
 
-removeObject: synth, sound, textgrid
+procedure remove_tree: .path$
+  runScript: preferencesDirectory$ + "/plugin_strutils/scripts/" +
+    ... "recursive_file_list_full_path.praat", "batch", .path, "*", 0
+  .n = Get number of strings
+  for .i to .n
+    .file$ = Get string: .i
+    deleteFile: .file$
+  endfor
+  nocheck Remove
 
-@ok_selection()
+  runScript: preferencesDirectory$ + "/plugin_strutils/scripts/" +
+    ... "recursive_directory_list_full_path.praat", "batch", .path, "*", 0
+  .n = Get number of strings
+  for .i to .n
+    .dir$ = Get string: .i
+    deleteFile: .dir$
+  endfor
+  nocheck Remove
 
-@done_testing()
+  deleteFile: .path$
+endproc

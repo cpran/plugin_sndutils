@@ -16,8 +16,6 @@ include ../../plugin_utils/procedures/utils.proc
 include ../../plugin_utils/procedures/check_directory.proc
 include ../../plugin_selection/procedures/selection.proc
 
-preferencesDirectory$ = replace_regex$(preferencesDirectory$, "(con)?(\.(EXE|exe))?$", "", 0)
-
 form RMS normalisation...
   sentence Read_from
   sentence Save_to
