@@ -1,4 +1,7 @@
 - next: # unreleased
+  - Changes:
+    - Minor cosmetic changes to tests
+    - Removed testsimple as a dependency
 - v0.0.6:
   - New:
     - This change log :)
