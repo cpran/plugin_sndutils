@@ -104,7 +104,7 @@ endproc
 
 procedure remove_tree: .path$
   runScript: preferencesDirectory$ + "/plugin_strutils/scripts/" +
-    ... "recursive_file_list_full_path.praat", "batch", .path, "*", 0
+    ... "recursive_file_list_full_path.praat", "batch", .path$, "*", 0, 0
   .n = Get number of strings
   for .i to .n
     .file$ = Get string: .i
@@ -113,7 +113,7 @@ procedure remove_tree: .path$
   nocheck Remove
 
   runScript: preferencesDirectory$ + "/plugin_strutils/scripts/" +
-    ... "recursive_directory_list_full_path.praat", "batch", .path, "*", 0
+    ... "recursive_directory_list_full_path.praat", "batch", .path$, "*", 0, 0
   .n = Get number of strings
   for .i to .n
     .dir$ = Get string: .i
