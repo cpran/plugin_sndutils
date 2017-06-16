@@ -1,4 +1,6 @@
 - next: # unreleased
+  - Fix:
+    - Corrected some tests which could fail under some circustances
   - Changes:
     - Minor cosmetic changes to tests
     - Removed testsimple as a dependency
