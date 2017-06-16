@@ -6,14 +6,8 @@ sndutils$  = preferencesDirectory$ + "/plugin_sndutils/scripts/"
 
 @plan: 66
 
-in$  = preferencesDirectory$ + "/plugin_sndutils/t/batch_in"
-out$ = preferencesDirectory$ + "/plugin_sndutils/t/batch_out"
-
 target[0] = 70
 target[1] = 90
-
-createDirectory: in$
-createDirectory: out$
 
 synth = Create SpeechSynthesizer: "English", "default"
 To Sound: "This is some text", "yes"
