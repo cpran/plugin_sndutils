@@ -1,4 +1,8 @@
 - next: # unreleased
+- v0.0.8:
+  - Fix:
+   - Tests pass under 6.0.36 by removing deprecated command parameters
+- v0.0.7:
   - Fix:
     - Corrected some tests which could fail under some circustances
   - Changes:
